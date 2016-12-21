@@ -1,4 +1,8 @@
 from flask import Flask , render_template 
+from bs4 import BeautifulSoup 
+from urllib2 import urlopen
+import json 
+
 app = Flask(__name__)
 
 @app.route('/')
