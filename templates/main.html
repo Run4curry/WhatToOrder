@@ -1,13 +1,30 @@
 <html>
 <head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 </head>
-
 
 <body>
 
-<p>Hi boss!!! What's up!</p>
-<p> shiva is sexy</p>
+{% if name %}
+	<p>Hi boss!!! What's up! {{name}}</p>
+{% else %}
+	<p> shiva is sexy</p>
+{% endif %}
 <p> What's up? </p>
+
+{% if people | length == 0 %}
+	<form method="post">
+	<input type="submit" value="Get Data">
+	</form>
+
+{% else %}
+	<form method="get">
+		<input type="submit" value="Hide Data">
+	</form>
+	{% for person in people %}
+		<p>{{person}}</p>
+	{% endfor %}
+{% endif %}
 </body>
 
 </html>
