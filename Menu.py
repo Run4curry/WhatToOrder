@@ -1,0 +1,2 @@
+def GetMenu():
+	pass
