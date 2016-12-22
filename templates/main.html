@@ -5,11 +5,17 @@
 
 <body>
 
-<form method="post">
-	<input type="text" placeholder="Enter name of restaurant">
-	<input type="text" placeholder="Enter address of restaurant">
+<form action="" method="post">
+	<input type="text" placeholder="Enter name of restaurant" name="rest" value="{{request.form.rest}}">
+	<input type="text" placeholder="Enter address of restaurant" name="address" value="{{request.form.address}}">
 	<input type="submit" value="What should I order?"> 
 </form>
+{% if restaurant %}
+	<p>{{restaurant}}</p>
+{% endif %}
+{% if address %}
+	<p>{{address}}</p>
+{% endif %}
 
 </body>
 
