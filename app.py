@@ -10,19 +10,21 @@ from Whatfoods import Foodlist
 
 app = Flask(__name__)
 
-@app.route('/')
-def hello_world():
-	return 'Hello swag!'
-
-@app.route('/user/<username>', methods=["GET","POST"])
-def swag(username):
-
-	if request.method == "GET":
-		people = []
+@app.route('/',methods=["GET","POST"])
+def mainpage():
 	if request.method == "POST":
-		people = ['Shiva','Aaron','Justin']
+		
 
-	return render_template('main.html',name=username,people=people)
+	return render_template('main.html')
+
+#@app.route('/user/<username>', methods=["GET","POST"])
+#def swag(username):
+
+#	if request.method == "GET":
+#		people = []
+#	if request.method == "POST":
+#		people = ['Shiva','Aaron','Justin']
+#	return render_template('main.html',name=username,people=people)
 
 
 
