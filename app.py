@@ -13,7 +13,9 @@ app = Flask(__name__)
 @app.route('/',methods=["GET","POST"])
 def mainpage():
 	if request.method == "POST":
-		
+		restaurant = request.form['rest']
+		address = request.form['address']
+		return render_template('main.html',restaurant=restaurant,address=address)
 
 	return render_template('main.html')
 
