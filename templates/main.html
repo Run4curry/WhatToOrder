@@ -5,26 +5,12 @@
 
 <body>
 
-{% if name %}
-	<p>Hi boss!!! What's up! {{name}}</p>
-{% else %}
-	<p> shiva is sexy</p>
-{% endif %}
-<p> What's up? </p>
+<form method="post">
+	<input type="text" placeholder="Enter name of restaurant">
+	<input type="text" placeholder="Enter address of restaurant">
+	<input type="submit" value="What should I order?"> 
+</form>
 
-{% if people | length == 0 %}
-	<form method="post">
-	<input type="submit" value="Get Data">
-	</form>
-
-{% else %}
-	<form method="get">
-		<input type="submit" value="Hide Data">
-	</form>
-	{% for person in people %}
-		<p>{{person}}</p>
-	{% endfor %}
-{% endif %}
 </body>
 
 </html>
