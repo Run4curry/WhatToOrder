@@ -1,7 +1,4 @@
 from flask import Flask , render_template , jsonify , request, url_for , redirect
-from bs4 import BeautifulSoup 
-from urllib2 import urlopen
-import json 
 from Menu import GetMenu
 from Review import GetReviews
 from Whatfoods import Foodlist 
