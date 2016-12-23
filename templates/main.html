@@ -1,10 +1,28 @@
 <html>
 <head>
+
+<meta charset="utf-8">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<link rel = "stylesheet" href = "css/bootstrap.css">
+<link rel = "stylesheet" href = "css/style.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src = "js/boostrap.min.js" rel = "stylesheet"> </script>    
+<script src = "jquery.min"> </script>
+
 </head>
-
-<body>
-
+    
+<style type = "text/css">
+    #align
+    {
+      margin-left: 0.5cm;  
+    }
+</style>
+    
+<body background = null>
+    
+<div id= "align">
+<h1>WhatToOrder</h1>
+<p>Enter an address and location</p>
 <form action="" method="post">
 	<input type="text" placeholder="Enter name of restaurant" name="rest" value="{{request.form.rest}}">
 	<input type="text" placeholder="Enter address of restaurant" name="address" value="{{request.form.address}}">
@@ -16,7 +34,8 @@
 {% if address %}
 	<p>{{address}}</p>
 {% endif %}
-
+</div>
+    
 </body>
 
 </html>
