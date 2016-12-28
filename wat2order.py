@@ -2,6 +2,8 @@
 #import shit goes here
 import requests #make http requests
 import json #format data from the requests
+import sys #importing this for now so we can exit out of the program forcibly if there is no menu
+#present for that restaurant
 
 #body
 
@@ -17,30 +19,47 @@ api_version ='20161226'
 search_params = { 'near':location, 'query':name_of_place, 'client_id':client_id, 'client_secret':client_secret, 'v':api_version }
 #make the request now
 search_request = requests.get('https://api.foursquare.com/v2/venues/search', params=search_params)
+#the explore request is to find the most popular venue for that restaurant, i.e. BJs has a lot of venues
+#in San Jose, so making a call to the explore API endpoint will return us the most popular venue location
+#for BJs in San Jose theoretically 
+explore_request = requests.get('https://api.foursquare.com/v2/venues/explore',params=search_params)
 search_data = search_request.json()
+explore_data = explore_request.json()
 #print(data)
+print
 
 
 #at this point we will simply take the first place returned and use the id to get the menu(if there is a menu)
-if(search_data['response']['venues'][0]['hasMenu']):
+#if(search_data['response']['venues'][0]['hasMenu']):
 	#construct api url *****TODO****** sum1 find a more elegant way to do this plsss
-	string1 = 'https://api.foursquare.com/v2/venues/'
-	string2 = search_data['response']['venues'][0]['id']
-	string3 = '/menu'
-	string_wow = string1 + string2 + string3
-	menu_params = { 'client_id':client_id, 'client_secret':client_secret, 'v':api_version }
-	menu_request = requests.get(string_wow, menu_params)
-	menu_data = menu_request.json()
-	#print(menu_data)
+string1 = 'https://api.foursquare.com/v2/venues/'
+#string2 = search_data['response']['venues'][0]['id']
+string2 = explore_data['response']['groups'][0]['items'][0]['venue']['id']
+address_of_venue = explore_data['response']['groups'][0]['items'][0]['venue']['location']['address']
+print(string2)
+print(address_of_venue)
+string3 = '/menu'
+string_wow = string1 + string2 + string3
+menu_params = { 'client_id':client_id, 'client_secret':client_secret, 'v':api_version }
+menu_request = requests.get(string_wow, menu_params)
+menu_data = menu_request.json()
+#print(menu_data)
+#else:
+#print('There is no available menu for %s. Please try again later!' % name_of_place)
+#sys.exit()
 
 #now we access the foods on the menu
 #this array to hold all items on menu
 food_items = []
 #accessing menu:
-for i in menu_data['response']['menu']['menus']['items']:
-	for j in i['entries']['items']:
-		for k in j['entries']['items']:
-			food_items.append(k['name'].lower())
+try:
+	for i in menu_data['response']['menu']['menus']['items']:
+		for j in i['entries']['items']:
+			for k in j['entries']['items']:
+				food_items.append(k['name'].lower())
+except:
+	print('There is no available menu for %s. Please try again later!' % name_of_place)
+	sys.exit()
 
 #print(food_items)
 
