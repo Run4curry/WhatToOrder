@@ -18,12 +18,12 @@ api_version ='20161226'
 #construct params for the search api call
 search_params = { 'near':location, 'query':name_of_place, 'client_id':client_id, 'client_secret':client_secret, 'v':api_version }
 #make the request now
-search_request = requests.get('https://api.foursquare.com/v2/venues/search', params=search_params)
+#search_request = requests.get('https://api.foursquare.com/v2/venues/search', params=search_params)
 #the explore request is to find the most popular venue for that restaurant, i.e. BJs has a lot of venues
 #in San Jose, so making a call to the explore API endpoint will return us the most popular venue location
 #for BJs in San Jose theoretically 
 explore_request = requests.get('https://api.foursquare.com/v2/venues/explore',params=search_params)
-search_data = search_request.json()
+#search_data = search_request.json()
 explore_data = explore_request.json()
 #print(data)
 print
