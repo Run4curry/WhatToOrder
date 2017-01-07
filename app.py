@@ -1,7 +1,6 @@
 from flask import Flask , render_template , jsonify , request, url_for , redirect
-from Menu import GetMenu
-from Review import GetReviews
-from Whatfoods import Foodlist 
+from what2Order import what2Order
+
 
 
 
@@ -12,7 +11,9 @@ def mainpage():
 	if request.method == "POST":
 		restaurant = request.form['rest']
 		address = request.form['address']
-		return render_template('main.html',restaurant=restaurant,address=address)
+		returnFoodList , returnCountList = what2Order(restaurant,address)
+
+		return render_template('main.html',returnFoodList=returnFoodList,returnCountList=returnCountList)
 
 	return render_template('main.html')
 

@@ -28,12 +28,26 @@
 	<input type="text" placeholder="Enter address of restaurant" name="address" value="{{request.form.address}}">
 	<input type="submit" value="What should I order?"> 
 </form>
-{% if restaurant %}
-	<p>{{restaurant}}</p>
+<div class="row">
+<div class="col-md-4">
+{% if returnFoodList %}
+<ul>
+{% for food in returnFoodList %}
+	<li>{{food}}</li>
+{% endfor %}
+</ul>
 {% endif %}
-{% if address %}
-	<p>{{address}}</p>
+</div>
+<div class="col-md-4">
+{% if returnCountList %}
+<ul>
+{% for count in returnCountList %}
+	<li>{{count}}</li>
+{% endfor %}
+</ul>
 {% endif %}
+</div>
+</div>
 </div>
     
 </body>
