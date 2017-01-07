@@ -2,8 +2,7 @@
 #import shit goes here
 import requests #make http requests
 import json #format data from the requests
-import sys #importing this for now so we can exit out of the program forcibly if there is no menu
-#present for that restaurant
+
 
 #body
 #function takes in the name_of_place and location from the POST request sent from the client-side 

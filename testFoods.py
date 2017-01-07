@@ -1,7 +1,6 @@
 import requests #make http requests
 import json #format data from the requests
-import sys #importing this for now so we can exit out of the program forcibly if there is no menu
-#present for that restaurant
+
 
 
 #the place where they are searching for, e.g. "mcdonalds"
